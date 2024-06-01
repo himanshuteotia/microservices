@@ -1,0 +1,27 @@
+{
+  "name": "microservices",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start:service-one": "cd service-one && node index.js",
+    "start:service-two": "cd service-two && node index.js",
+    "start:api-gateway": "cd api-gateway && node index.js",
+    "start:all": "concurrently \"npm:start:service-one\" \"npm:start:service-two\" \"npm:start:api-gateway\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/himanshuteotia/microservices.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/himanshuteotia/microservices/issues"
+  },
+  "homepage": "https://github.com/himanshuteotia/microservices#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
