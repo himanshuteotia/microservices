@@ -1,6 +1,4 @@
-# microservices
-
-# Project Title
+# Microservices Architecture
 
 A modular Node.js application designed to demonstrate the integration and operation of several independent services within a single repository. This setup is ideal for demonstrating a microservices architecture, where each service is developed and run independently but works together as parts of a whole system.
 
