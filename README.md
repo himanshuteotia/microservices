@@ -8,6 +8,7 @@ This project includes three main components:
 
 - **Service One**: 
 - **Service Two**: 
+- **Service Registry**: To find all registered services urls 
 - **API Gateway**: Acts as the central entry point for client requests, routing them to the appropriate service based on the request path.
 
 Each service is self-contained within its own subdirectory and can be run independently or simultaneously through a unified command.
