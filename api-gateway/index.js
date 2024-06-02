@@ -2,6 +2,7 @@ import express from 'express';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import axios from 'axios';
 import rateLimit from 'express-rate-limit';
+import slowDown from 'express-slow-down';
 
 const app = express();
 const PORT = 3000;
@@ -34,8 +35,18 @@ const limiter = rateLimit({
   }
 });
 
+// Speed limiting middleware
+const speedLimiter = slowDown({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  delayAfter: 50, // allow 50 requests per 15 minutes, then...
+  delayMs: 500 // begin adding 500ms of delay per request above 50
+});
+
 // Apply the rate limiting middleware to all requests
 app.use(limiter);
+
+// Apply the speed limiting middleware to all requests
+app.use(speedLimiter);
 
 // Middleware to log requests
 app.use((req, res, next) => {
