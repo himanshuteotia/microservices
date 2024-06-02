@@ -6,8 +6,8 @@ A modular Node.js application designed to demonstrate the integration and operat
 
 This project includes three main components:
 
-- **Service One**: 
-- **Service Two**: 
+- **Service One**: Service
+- **Service Two**: Service (Also has case of circuit breaker : The Circuit Breaker pattern prevents a network or service failure from cascading to other parts of the system)
 - **Service Registry**: To find all registered services urls 
 - **API Gateway**: Acts as the central entry point for client requests, routing them to the appropriate service based on the request path.
 
