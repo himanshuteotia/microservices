@@ -8,8 +8,9 @@
     "start:service-one": "cd service-one && node index.js",
     "start:service-two": "cd service-two && node index.js",
     "start:api-gateway": "cd api-gateway && node index.js",
+    "start:auth-service": "cd auth-service && node index.js",
     "start:service-registry": "cd service-registry && node index.js",
-    "start:all": "concurrently \"npm:start:service-one\" \"npm:start:service-two\" \"npm:start:service-registry\" \"npm:start:api-gateway\""
+    "start:all": "concurrently \"npm:start:service-one\" \"npm:start:service-two\" \"npm:start:service-registry\" \"npm:start:auth-service\" \"npm:start:api-gateway\""
   },
   "repository": {
     "type": "git",

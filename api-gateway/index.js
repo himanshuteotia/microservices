@@ -72,11 +72,46 @@ const dynamicProxy = (serviceName) => {
   };
 };
 
+// Function to create middleware for authentication and authorization
+function authMiddleware(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).send('Authorization header not found or invalid');
+  }
+
+  const token = authHeader.split(' ')[1]; 
+  // Determine action based on HTTP method
+  const action = req.method; 
+
+  axios.post('http://localhost:9000/authorize', { token, action })
+      .then(response => {
+          if (response.status === 200) {
+              next(); // Proceed if authorized
+          } else {
+              res.status(403).send('Access Denied');
+          }
+      })
+      .catch(error => {
+          if (error.response) {
+              res.status(error.response.status).send(error.response.data);
+          } else {
+              res.status(500).send('Internal Server Error');
+          }
+      });
+}
+
 // Proxy requests to Service One
-app.use('/service-one', dynamicProxy('service-one'));
+app.use('/service-one', authMiddleware,  dynamicProxy('service-one'));
 
 // Proxy requests to Service Two
 app.use('/service-two', dynamicProxy('service-two'));
+
+// Proxy requests to Auth Service
+app.use('/auth-service', createProxyMiddleware({
+  target: 'http://localhost:9000',
+  changeOrigin: true,
+  pathRewrite: { [`^/auth-service`]: '' }
+}));
 
 app.listen(PORT, () => {
   console.log(`API Gateway running on http://localhost:${PORT}`);
