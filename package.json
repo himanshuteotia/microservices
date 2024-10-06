@@ -25,5 +25,8 @@
   "homepage": "https://github.com/himanshuteotia/microservices#readme",
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "winston": "^3.15.0"
   }
 }
