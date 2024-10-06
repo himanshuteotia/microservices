@@ -7,5 +7,3 @@ jest.mock("express-slow-down");
 jest.mock("../logger.js", () => ({
   info: jest.fn(),
 }));
-
-// ... rest of the file remains unchanged ...
