@@ -16,5 +16,3 @@ jest.mock("winston", () => ({
     File: jest.fn(),
   },
 }));
-
-// ... rest of the file remains unchanged ...
