@@ -8,5 +8,3 @@ jest.mock("../logger.js", () => ({
   info: jest.fn(),
   error: jest.fn(),
 }));
-
-// ... rest of the file remains unchanged ...
