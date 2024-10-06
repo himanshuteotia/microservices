@@ -6,5 +6,3 @@ import { authMiddleware } from "../authMiddleware.js";
 jest.mock("http-proxy-middleware");
 jest.mock("../proxyUtils.js");
 jest.mock("../authMiddleware.js");
-
-// ... rest of the file remains unchanged ...
